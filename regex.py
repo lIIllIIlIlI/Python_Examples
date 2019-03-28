@@ -45,4 +45,7 @@ command: rfrString = re.search(r'RAM_FROM_RUN[ ]*PROGBITS[ ]*\d*[ ]\d*[ ]*\d*',s
 Output: Extrahiert RAM_FROM_RUN    PROGBITS   000032   000043   000054 aus dem String heraus
 Nachbearbeitung: rfrElements = rfrString.group(0).split()
                  rfrStringValue = rfrElements[-1]
+ 
+ re.search liefert ein Objekt zurück, möchte man die entsprechenden Elemente als Liste zurück bekommen ist die Funktion re.findall
+ zu verwenden. Mit  einem len(rückgabewert) lässt sich die Anzahl an treffern ermitteln. 
 
