@@ -1,8 +1,36 @@
-# 1. verhindern : hardcoded path user/data/text.txt
-# 2. verhindern : relative Pfade, read(/logfiles/error.log), da Module in Unterordnern jeweils einen angepassten Pfad brauchen
-# Besser ist es, die Pfade zur Lautzeit absolut zu bestimmen. 
 # Wird ein Skript aus der ferne aufgerufen bzw innerhalb einer Ide über eine Ordnerstruktur hinweg, ist nicht klar welches library
 # welchen Pfad als root bezeichnet, den Pfad der Aufrufers oder den Pfad des Skriptes. Daher sollte der Skriptpfad absolut zur 
-# Lautzeit eingeholt werden und alle weiteren Pfade von dort aus absolut bestimmt werden. 
+# Lautzeit eingeholt werden und alle weiteren Pfade von dort aus relativ bestimmt werden. 
 
-import pathlib
+from pathlib import Path
+import os
+
+scriptDir = Path.cwd()
+print("Script directory (Path.cwd()): {}". format(scriptDir))
+
+logDir = scriptDir / "Logfile" / "mylogfil.log"
+print("logDir: {}".format(logDir))
+
+# Alternativ
+logDirParts = ["Logfile", "mylogfile.log"]
+logDir = scriptDir.joinpath(*logDirParts)
+print("logDir created by joining a list: {}".format(logDir))
+
+# dir = Path(dirString) erstellt ein Path Objekt aus einem String
+
+print("Is the script dir a directory? {}".format(scriptDir.is_dir()))
+print("Or is it a file? {}".format(scriptDir.is_file()))
+print("If it wasn't already, abs path could be created: {}".format(scriptDir.absolute()))
+print("Note parts, anchor and parent are member variables of object 'Path' and not functions!")
+print("Anyway, it consists of the following parts: {}".format(scriptDir.parts))
+print("The most top level part of the path:  {}".format(scriptDir.anchor))
+print("Parent of the path: {}".format(scriptDir.parent))
+print("Parent of the parent: {}".format(scriptDir.parent.parent))
+
+# Alle Ordner und Datein im Ordner listen:
+for element in scriptDir.glob('*.*'):
+    print("Name of found elements (Membervariable of Path obj): {}".format(element.name))
+
+# Rekursiv
+for element in scriptDir.rglob('*.*'):
+    print("Name of found elements (Membervariable of Path obj): {}".format(element.name))
