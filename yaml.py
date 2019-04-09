@@ -1,3 +1,17 @@
+########################################################
+# There are three different use cases that require different formats:
+#
+# 1. User config file - Yaml
+#
+# 2. in/out file for further processing - csv
+#
+# 3. internal dump/load - pickle
+#
+# All three variants need to be adressed separately
+#
+########################################################
+
+
 import yaml
 
 # open reading
