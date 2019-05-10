@@ -48,4 +48,7 @@ Nachbearbeitung: rfrElements = rfrString.group(0).split()
  
  re.search liefert ein Objekt zurück, möchte man die entsprechenden Elemente als Liste zurück bekommen ist die Funktion re.findall
  zu verwenden. Mit  einem len(rückgabewert) lässt sich die Anzahl an treffern ermitteln. 
+ 
+ Testen der Regex:
+ https://regex101.com/r/g0E3qB/1
 
