@@ -11,3 +11,7 @@ import subprocess
             else:
                 logString = "SUCCESS"
                 resultLogger.info(logString)
+
+              
+ # Carefull: Some commands won't terminate, therefore python will read infinite blank lines. 
+ # Therefore install a Counter to only read n lines of both stdout and stderr.
