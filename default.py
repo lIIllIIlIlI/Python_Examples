@@ -21,7 +21,20 @@ from pathlib import Path
 ###################################################################################################
 #                                Input Arguments                                                  #
 ###################################################################################################
+parser = argparse.ArgumentParser()
 
+# optional 
+parser.add_argument('--clean','-c', help = 'clean build folder before compilation', action="store_true", default=False)
+# choices, required
+parser.add_argument('--instrumentation','-i', help = 'List of instrumentations, multiple instrumentations allowed. Example: --instrumentation Xcp Profiler', choices = build_instrumentations, nargs = '+', required = True)
+# integer 
+parser.add_argument('--nocores', '-n', help='Number of vCores available in the system is default.', type = int, required = False)
+# custom string
+parser.add_argument('--path...)
+
+args = parser.parse_args()
+
+print(args.nocores)
 
 ###################################################################################################
 #                                Init Logger                                                      #
