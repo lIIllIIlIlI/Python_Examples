@@ -52,3 +52,4 @@ Nachbearbeitung: rfrElements = rfrString.group(0).split()
  Testen der Regex:
  https://regex101.com/r/g0E3qB/1
 
+Tipp: () Klammern markieren die Gruppen, die erste markierung ist in der ersten Gruppe etc. So könnnen die Daten sehr einfach angesprochen werden
