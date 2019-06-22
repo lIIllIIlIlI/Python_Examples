@@ -5,6 +5,8 @@
 from pathlib import Path
 import os
 
+# Tricky, because script might be called from somewhere other than script path.
+# Path(__file__).parent is more stable
 scriptDir = Path.cwd()
 print("Script directory (Path.cwd()): {}". format(scriptDir))
 
