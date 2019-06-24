@@ -36,6 +36,9 @@ args = parser.parse_args()
 
 print(args.nocores)
 
+logger.info("*** Initialise input arguments: SUCCESS ***")
+logger.info("*** Initialise logger: SUCCESS ***")
+                    
 ###################################################################################################
 #                                Init Logger                                                      #
 ###################################################################################################
