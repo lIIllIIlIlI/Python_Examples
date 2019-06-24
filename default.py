@@ -39,13 +39,29 @@ print(args.nocores)
 ###################################################################################################
 #                                Init Logger                                                      #
 ###################################################################################################
-logger = logging.getLogger(__name__)
-# loggerA = logging.getLogger(__name__ + '.A')
-# loggerB = logging.getLogger(__name__ + '.B')
 
-logFilePath = Path.cwd() / __name__ + ".log"
-handler = logging.FileHandler(logFilePath, 'info')
+# create logger
+loggerName = Path(__file__).stem
+logFormatter = logging.Formatter(fmt=' %(name)s :: %(levelname)s :: %(message)s')
+logger = logging.getLogger(loggerName)
+logger.setLevel(logging.DEBUG)
 
+# create console handler
+Handler = logging.StreamHandler()
+if(args.verbose):
+        Handler.setLevel(logging.DEBUG)
+else:
+        Handler.setLevel(logging.INFO)
+Handler.setFormatter(logFormatter)
+
+# Add console handler to logger
+logger.addHandler(Handler)
+
+# install logfile
+logFileHandler = logging.FileHandler(logFilePath, mode = 'w')
+logFileHandler.setLevel(logging.DEBUG)
+logFileHandler.setFormatter(logFormatter)
+logger.addHandler(logFileHandler)
                     
 ###################################################################################################
 #                                Global Variables                                                 #
