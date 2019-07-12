@@ -23,6 +23,10 @@ from pathlib import Path
 ###################################################################################################
 parser = argparse.ArgumentParser()
 
+# verbose
+parser.add_argument('--verbose', help='Show debug information', action="store_true", default = False, required = False)
+# quiet
+parser.add_argument('--quiet', '-q',  help='Show only critical warnings and errors', action="store_true", default = False, required = False)
 # optional 
 parser.add_argument('--clean','-c', help = 'clean build folder before compilation', action="store_true", default=False)
 # choices, required
@@ -35,9 +39,6 @@ parser.add_argument('--path...)
 args = parser.parse_args()
 
 print(args.nocores)
-
-logger.info("*** Initialise input arguments: SUCCESS ***")
-logger.info("*** Initialise logger: SUCCESS ***")
                     
 ###################################################################################################
 #                                Init Logger                                                      #
@@ -52,9 +53,11 @@ logger.setLevel(logging.DEBUG)
 # create console handler
 Handler = logging.StreamHandler()
 if(args.verbose):
-        Handler.setLevel(logging.DEBUG)
+    Handler.setLevel(logging.DEBUG)
+elif(args.quiet):
+    Handler.setLevel(logging.WARNING)
 else:
-        Handler.setLevel(logging.INFO)
+    Handler.setLevel(logging.INFO)
 Handler.setFormatter(logFormatter)
 
 # Add console handler to logger
@@ -65,6 +68,9 @@ logFileHandler = logging.FileHandler(logFilePath, mode = 'w')
 logFileHandler.setLevel(logging.DEBUG)
 logFileHandler.setFormatter(logFormatter)
 logger.addHandler(logFileHandler)
+                    
+logger.info("*** Initialise input arguments: SUCCESS *** \n")
+logger.info("*** Initialise logger: SUCCESS *** \n")            
                     
 ###################################################################################################
 #                                Global Variables                                                 #
@@ -80,13 +86,9 @@ def init():
     """
     # Check if Python >= 3.5 is installed
     if sys.version_info < (3, 5, 0):
-        sys.stderr.write("You need Python 3.5 or greater to run this script \n")
+        logger.error("You need Python 3.5 or greater to run this script \n")
         exit(1)
-        
-    
-    
-    
-    
+      
 if __name__ == '__main__':
     init()
 
