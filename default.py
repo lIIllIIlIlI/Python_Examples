@@ -15,6 +15,10 @@
 import logging
 import sys
 import argparse
+try:
+  import yaml
+except:
+  print("Yaml is not installed properly")
 
 from pathlib import Path
 
