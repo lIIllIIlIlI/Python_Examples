@@ -90,5 +90,7 @@ def init():
         exit(1)
       
 if __name__ == '__main__':
+    # Change context to current path
+    os.chdir(Path(__file__).parent)                    
     init()
 
