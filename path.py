@@ -1,12 +1,16 @@
-# Wird ein Skript aus der ferne aufgerufen bzw innerhalb einer Ide über eine Ordnerstruktur hinweg, ist nicht klar welches library
-# welchen Pfad als root bezeichnet, den Pfad der Aufrufers oder den Pfad des Skriptes. Daher sollte der Skriptpfad absolut zur 
-# Lautzeit eingeholt werden und alle weiteren Pfade von dort aus relativ bestimmt werden. 
-
 from pathlib import Path
 import os
 
-# Tricky, because script might be called from somewhere other than script path.
-# Path(__file__).parent is more stable
+# print current root path
+rootPath = Path.cwd()
+print("rootPath: {}".format(rootPath))
+
+# Root path is determined by the caller location, while the script normally expects it's own location. Therefore change root Path
+# At the beginning of root python script. Since a script can be called as a library or as root, a if __name__ == '__main__' check
+# if required first. All scripts from here have the successor root path and can be handled by relative pathes. 
+os.chdir(Path(__file__).parent)
+
+# The actual root path
 scriptDir = Path.cwd()
 print("Script directory (Path.cwd()): {}". format(scriptDir))
 
