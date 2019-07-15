@@ -126,3 +126,12 @@ with open(currentTime + ".prof", 'a', newline='') as csvfile:
                 memWriter.writerow(['', '', ''])
 
 # ------------------------------------------------------------------------------------
+
+
+ try:
+        with open(source, "r", encoding='utf-8') as sourceFileDeskriptor:
+            sourceRawText = sourceFileDeskriptor.readlines()
+    except UnicodeDecodeError:
+        # non utf-8 files might either be given by vendor or someone accidently converted the file to something else.
+        logger.warning("File {} does not use utf-8 format and can't be processed. Skipping file ...".format(source))
+        return
