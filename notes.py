@@ -4,7 +4,9 @@ wrongPath = 'C:\user\03sourcecode'
 rightPath = 'C:\user\\03sourcecode'
 print(wrongPath)
 print(rightPath)
-
+ 
+except Exception as exceptionError:
+	print("my error handling output. The actual output: {}".format(exceptionError))
 
 ###########################################################################################################
 
