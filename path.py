@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import shutil
 
 # print current root path
 rootPath = Path.cwd()
@@ -46,3 +47,11 @@ for element in scriptDir.glob('*.*'):
 # Rekursiv
 for element in scriptDir.rglob('*.*'):
     print("Name of found elements (Membervariable of Path obj): {}".format(element.name))
+      
+# Creating directory
+if not scriptDir.is_dir():
+   os.makedirs(scriptDir)
+      
+# Deleting directory recursively
+if scriptDir.is_dir():
+   shutil.rmtree(scriptDir)
