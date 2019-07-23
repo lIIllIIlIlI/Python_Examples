@@ -55,3 +55,6 @@ if not scriptDir.is_dir():
 # Deleting directory recursively
 if scriptDir.is_dir():
    shutil.rmtree(scriptDir)
+      
+# Deleting specific file
+os.remove(file)
