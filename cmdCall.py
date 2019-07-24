@@ -44,6 +44,14 @@ callCmd = subprocess.Popen(command,
   
     for line in iter(callCmd.stderr.readline, ''):
   
+  
+ command = ["svn", "info", buildInfo["SwRevPath"]]
+        proc = runSubTask(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        try:
+            url = proc.stdout.decode("iso-8859-1").strip()
+            eleNo = re.search("(?<=/ELE-)\d{5}(?=/)", url).group(0)
+        except:
+            ProjetNumber= "0"
     
 
  
