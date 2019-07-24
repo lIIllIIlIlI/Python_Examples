@@ -54,7 +54,15 @@ callCmd = subprocess.Popen(command,
             ProjetNumber= "0"
     
 
- 
+  svnVersionPattern = r'Revision: (\d+)'
+    command = ["svn", "info", buildInfo["SwRevPath"]]
+    callCmd = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    
+    print(callCmd.communicate())
+    if callCmd.returncode:
+        print("Could not read svn revision")
+    else:
+        svnRev = re.search(svnVersionPattern, str(callCmd.communicate())).group(1)
         
  # Carefull: Some commands won't terminate, therefore python will read infinite blank lines. 
  # Therefore install a Counter to only read n lines of both stdout and stderr.
