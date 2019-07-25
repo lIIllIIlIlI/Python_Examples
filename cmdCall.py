@@ -65,9 +65,18 @@ callCmd = subprocess.Popen(command,
         svnRev = re.search(svnVersionPattern, str(callCmd.communicate())).group(1)
       
    command = ["gcc.exe", "-v"]
-    process = subprocess.Popen(command, bufsize=1, universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    if process.returncode:
-        bobLogger.warning("Checking gcc installation ... FAILED.\nGcc is not installed properly, therefore bob can't generate a proper a2l file. Continue ...")
+    try:
+        process = subprocess.Popen(command, bufsize=1, universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        if not process.returncode:
+            printCurrentAction("Checking gcc installation", "OK")
+    except FileNotFoundError:
+        printCurrentAction("Checking gcc installation", "NOK")
+        bobLogger.info("*       --> Gcc is not installed, a2l cant be generated")..")
         
  # Carefull: Some commands won't terminate, therefore python will read infinite blank lines. 
  # Therefore install a Counter to only read n lines of both stdout and stderr.
+ 
+ 
+ 
+ # When the command itself breaks, the python run breaks. Returncode handles errors that take place within a legit call. Those
+ # two different kind of errors need to be handles properly. 
