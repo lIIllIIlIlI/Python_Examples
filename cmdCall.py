@@ -63,6 +63,11 @@ callCmd = subprocess.Popen(command,
         print("Could not read svn revision")
     else:
         svnRev = re.search(svnVersionPattern, str(callCmd.communicate())).group(1)
+      
+   command = ["gcc.exe", "-v"]
+    process = subprocess.Popen(command, bufsize=1, universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    if process.returncode:
+        bobLogger.warning("Checking gcc installation ... FAILED.\nGcc is not installed properly, therefore bob can't generate a proper a2l file. Continue ...")
         
  # Carefull: Some commands won't terminate, therefore python will read infinite blank lines. 
  # Therefore install a Counter to only read n lines of both stdout and stderr.
