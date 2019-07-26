@@ -4,12 +4,12 @@ from os import makedirs
 from pathlib import Path
 from enum import Enum
 
-class logModus(Enum):
+class LOGMODUS(Enum):
     VERBOSE = 0
     NORMAL = 1
     QUIET = 2
 
-class fileLogging(Enum):
+class FILELOGGING(Enum):
     INACTIVE = 0
     ACTIVE = 1
 
@@ -20,19 +20,19 @@ print(logPath)
 if not logPath.is_dir():
     makedirs(logPath)
 
-def getPrettyLogger(loggerName, logModus, fileLogging):
+def getPrettyLogger(loggerName, LOGMODUS, FILELOGGING):
     """
     Creates and returns a logger object
 
     Input:
         LoggerName: str
 
-        logModus: enum
+        LOGMODUS: enum
             Verbose - full output + full meta data
             normal - normal output + minimal meta data
             quiet - only crucial output + minimal meta data
 
-        fileLogging: enum
+        FILELOGGING: enum
             active - print to console + logfile
             inactive - print to console only 
     """
@@ -43,18 +43,18 @@ def getPrettyLogger(loggerName, logModus, fileLogging):
     # HANDLER ----------------------------------------------------------------------------------------------
     # create console handler
     consoleHandler = logging.StreamHandler()
-    if(logModus == logModus.VERBOSE):
+    if(LOGMODUS == LOGMODUS.VERBOSE):
         consoleHandler.setLevel(logging.DEBUG)
-    elif(logModus == logModus.QUIET):
+    elif(LOGMODUS == LOGMODUS.QUIET):
         consoleHandler.setLevel(logging.WARNING)
-    elif(logModus == logModus.NORMAL):
+    elif(LOGMODUS == LOGMODUS.NORMAL):
         consoleHandler.setLevel(logging.INFO)
     else:
         print("Invalid logger mode selected. Please choose from {verbose, quiet, normal}. Exiting ...")
         exit(1)   
 
     # create logfile handler
-    if fileLogging == fileLogging.ACTIVE:
+    if FILELOGGING == FILELOGGING.ACTIVE:
         logFileName = str(loggerName) + ".log"
         logFilePath = str(logPath / Path(logFileName))
         print("logFilePath: {}".format(logFilePath))
@@ -65,13 +65,13 @@ def getPrettyLogger(loggerName, logModus, fileLogging):
     logger.addHandler(consoleHandler)
 
     # set logfile handler 
-    if fileLogging == fileLogging.ACTIVE:
+    if FILELOGGING == FILELOGGING.ACTIVE:
         logger.addHandler(logFileHandler)
     # -------------------------------------------------------------------------------------------------------
     
      # FORMATTER ---------------------------------------------------------------------------------------------
     # create console formatter
-    if(logModus == logModus.VERBOSE):
+    if(LOGMODUS == LOGMODUS.VERBOSE):
         consoleLogFormatter = logging.Formatter(fmt='%(filename)-8s :: %(funcName)s :: %(lineno)d :: %(levelname)s :: %(message)s')
     else:
         consoleLogFormatter = logging.Formatter(fmt='%(levelname)-8s :: %(message)s')
@@ -83,7 +83,7 @@ def getPrettyLogger(loggerName, logModus, fileLogging):
     consoleHandler.setFormatter(consoleLogFormatter)        
     
     # Set logfile formatter
-    if fileLogging:
+    if FILELOGGING:
         logFileHandler.setFormatter(logFileFormatter)
     # ------------------------------------------------------------------------------------------------------
     
