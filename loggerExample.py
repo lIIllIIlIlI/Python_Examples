@@ -1,12 +1,12 @@
 from prettyLogger import getPrettyLogger
-from prettyLogger import logModus
-from prettyLogger import fileLogging
+from prettyLogger import LOGMODUS
+from prettyLogger import FILELOGGING
 
 # Debug logger
 print("\n\n")
 print("****   debug logger   ****")
 print("\n\n")
-debugLogger = getPrettyLogger("exampleLogger", logModus.VERBOSE, fileLogging.ACTIVE)
+debugLogger = getPrettyLogger("exampleLogger", LOGMODUS.VERBOSE, FILELOGGING.ACTIVE)
 
 debugLogger.debug("Hello")
 debugLogger.info("Pierburg,")
@@ -18,7 +18,7 @@ debugLogger.error("Logger")
 print("\n\n")
 print("****   normal logger   ****")
 print("\n\n")
-normalLogger = getPrettyLogger("normalLogger", logModus.NORMAL, fileLogging.ACTIVE)
+normalLogger = getPrettyLogger("normalLogger", LOGMODUS.NORMAL, FILELOGGING.ACTIVE)
 
 normalLogger.debug("Hello")
 normalLogger.info("Pierburg,")
@@ -30,7 +30,7 @@ normalLogger.error("Logger")
 print("\n\n")
 print("****   quiet logger   ****")
 print("\n\n")
-quietLogger = getPrettyLogger("quietLogger", logModus.QUIET, fileLogging.ACTIVE)
+quietLogger = getPrettyLogger("quietLogger", LOGMODUS.QUIET, FILELOGGING.ACTIVE)
 
 quietLogger.debug("Hello")
 quietLogger.info("Pierburg,")
