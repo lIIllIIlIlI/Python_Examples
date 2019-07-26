@@ -72,12 +72,12 @@ def getPrettyLogger(loggerName, LOGMODUS, FILELOGGING):
      # FORMATTER ---------------------------------------------------------------------------------------------
     # create console formatter
     if(LOGMODUS == LOGMODUS.VERBOSE):
-        consoleLogFormatter = logging.Formatter(fmt='%(filename)-8s :: %(funcName)s :: %(lineno)d :: %(levelname)s :: %(message)s')
+        consoleLogFormatter = logging.Formatter(fmt='%(levelname)s :: %(filename)-8s :: %(funcName)s :: %(lineno)d :: %(message)s')
     else:
         consoleLogFormatter = logging.Formatter(fmt='%(levelname)-8s :: %(message)s')
 
     # create logfile formatter
-    logFileFormatter = logging.Formatter(fmt='%(filename)-8s :: %(funcName)s :: %(lineno)d :: %(levelname)s :: %(message)s')
+    logFileFormatter = logging.Formatter(fmt='%(levelname)s :: %(filename)-8s :: %(funcName)s :: %(lineno)d :: %(message)s')
 
     # set console formatter  
     consoleHandler.setFormatter(consoleLogFormatter)        
