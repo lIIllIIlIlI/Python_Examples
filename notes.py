@@ -10,3 +10,9 @@ except Exception as exceptionError:
 
 ###########################################################################################################
 
+# Deleting/Adding items while iterating over data structure:
+#    Solution: Iterate over a copy of said data structure
+myList = [1, 2, 3, 4, 5]
+for number in list(myList):
+	if number == 2:
+		myList.remove(number)
