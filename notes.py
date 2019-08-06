@@ -26,5 +26,5 @@ for index, elem in enumerate(myList):
 	if index == 0:
 		print(elem)
 	else:
-		print(myList[index])
+		print(myList[elem])
 	
