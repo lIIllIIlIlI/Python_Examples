@@ -5,6 +5,8 @@ rightPath = 'C:\user\\03sourcecode'
 print(wrongPath)
 print(rightPath)
  
+###########################################################################################################	
+
 except Exception as exceptionError:
 	print("my error handling output. The actual output: {}".format(exceptionError))
 
@@ -16,3 +18,13 @@ myList = [1, 2, 3, 4, 5]
 for number in list(myList):
 	if number == 2:
 		myList.remove(number)
+
+###########################################################################################################
+
+myList = ["hello", "world"]
+for index, elem in enumerate(myList):
+	if index == 0:
+		print(elem)
+	else:
+		print(myList[index])
+	
