@@ -28,3 +28,7 @@ for index, elem in enumerate(myList):
 	else:
 		print(myList[elem])
 	
+
+###########################################################################################################
+# Read list of value from object list
+[typeDef.name for typeDef in typeDefs]
