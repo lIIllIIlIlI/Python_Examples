@@ -32,3 +32,25 @@ for index, elem in enumerate(myList):
 ###########################################################################################################
 # Read list of value from object list
 [typeDef.name for typeDef in typeDefs]
+
+
+
+# NAMESPACES/SCOPES
+#	
+# Variables are passed via pointers on default
+#
+# direct assignment of objects will create a reference/pointer pair and add it to both objects. To recreate another 
+# Object with sama data, deepcopy is used.
+#
+# "if __name__ == "__main__":" has the same scope as any other code part that is not within functions/classes 
+#
+# Everything that is not within functions/classes is global by default, setting it global has no effect
+#
+# Functions/classes don't inherit global variables, they have to be imported by the keyword global.
+#
+# 
+#
+#
+#
+#
+#
