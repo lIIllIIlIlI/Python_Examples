@@ -1,56 +1,52 @@
-# Playground: https://pythex.org/
-\ 	escape special characters
-. 	matches any character
-^ 	matches beginning of string
-$ 	matches end of string
-[5b-d] 	matches any chars '5', 'b', 'c' or 'd'
-[^a-c6] 	matches any char except 'a', 'b', 'c' or '6'
-R|S 	matches either regex R or regex S
-() 	creates a capture group and indicates precedence
+# Playground: https://regex101.com/  (Change regex to python!!)
 
-* 	0 or more (append ? for non-greedy)
-+ 	1 or more (append ? for non-greedy)
-? 	0 or 1 (append ? for non-greedy)
-{m} 	exactly mm occurrences
-{m, n} 	from m to n. m defaults to 0, n to infinity
-{m, n}? 	from m to n, as few as possible
-
-\A 	start of string
-\b 	matches empty string at word boundary (between \w and \W)
-\B 	matches empty string not at word boundary
+.   matches any character
 \d 	digit
 \D 	non-digit
 \s 	whitespace: [ \t\n\r\f\v]
 \S 	non-whitespace
 \w 	alphanumeric: [0-9a-zA-Z_]
 \W 	non-alphanumeric
-\Z 	end of string
-\g<id> 	matches a previously defined group
+\d 	digit
+\D 	non-digit
+\s 	whitespace: [ \t\n\r\f\v]
+\S 	non-whitespace
 
-(?iLmsux) 	matches empty string, sets re.X flags
-(?:...) 	non-capturing version of regular parentheses
-(?P...) 	matches whatever matched previously named group
-(?P=) 	digit
-(?#...) 	a comment; ignored
-(?=...) 	lookahead assertion: matches without consuming
-(?!...) 	negative lookahead assertion
-(?<=...) 	lookbehind assertion: matches if preceded
-(?<!...) 	negative lookbehind assertion
-(?(id)yes|no) 	match 'yes' if group 'id' matched, else 'no'
+^ 	matches beginning of string
+$ 	matches end of string
 
-regexString = re.search(r'customRegex', string)
+[5b-d] 	  matches any chars '5', 'b', 'c' or 'd'
+[^a-c6] 	matches any char except 'a', 'b', 'c' or '6'
+[a|b]     matches either a or b
 
-Examples:
-command: rfrString = re.search(r'RAM_FROM_RUN[ ]*PROGBITS[ ]*\d*[ ]\d*[ ]*\d*',str(stdout))
-Output: Extrahiert RAM_FROM_RUN    PROGBITS   000032   000043   000054 aus dem String heraus
-Nachbearbeitung: rfrElements = rfrString.group(0).split()
-                 rfrStringValue = rfrElements[-1]
- 
- re.search liefert ein Objekt zurück, möchte man die entsprechenden Elemente als Liste zurück bekommen ist die Funktion re.findall
- zu verwenden. Mit  einem len(rückgabewert) lässt sich die Anzahl an treffern ermitteln. 
+* 	0 or more 
++ 	1 or more 
+
+{m} 	exactly mm occurrences
+{m, n} 	from m to n. m defaults to 0, n to infinity
+{m, n}? 	from m to n, as few as possible
+
+\w 	alphanumeric: [0-9a-zA-Z_]  // variable name
+\W 	non-alphanumeric
+
+Special notes:
+- special characters have to be escaped, including the escape symbol. Example: '[' is catched by \[, '\' is catched by '\\'
+- Optional word: (regex)?                                                                                                  
+- Naming a group: (?P<name>regex)
+- Noncapturing group: (?:regex)                                                                                              
+  
+# line operation                                                                                                 
+originalString = "Test string"                                                                                                  
+pattern = r'regex'
+extractedString = re.match(pattern, originalString)                                                                                                   
+                                                                                                   
+# file operation, DOTALL determines how \n (next line) is handled
+fileString = read(...)                                                                                                   
+pattern = r'regex'
+reObjOfPattern = re.compile(pattern, re.MULTILINE)                                                                                                   
+matches = reObjOfPattern.findall(fileString)
+# There are a couple more functions to delete/replace certain elements of string                                                                                                   
+                                                                                                   
  
  Testen der Regex:
  https://regex101.com/r/g0E3qB/1
-
-# Tipp: () Klammern markieren die Gruppen, die erste markierung ist in der ersten Gruppe etc. So könnnen die Daten sehr einfach angesprochen werden
-# Wird das erstellte regex objekt geprintet wird nicht das komplette match dargestellt, es kommt zu einem overflow für lange strings.
