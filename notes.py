@@ -47,10 +47,29 @@ for index, elem in enumerate(myList):
 # Everything that is not within functions/classes is global by default, setting it global has no effect
 #
 # Functions/classes don't inherit global variables, they have to be imported by the keyword global.
-#
-# 
-#
-#
-#
-#
-#
+
+
+###########################################################################################################
+
+Attached/Remote debugging:
+
+1. Install module ptvsd
+2. Insert following lines in code:
+	import ptvsd
+	# 5678 is the default attach port in the VS Code debug configurations
+	ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True)
+	ptvsd.wait_for_attach()
+3. Create Attach debug configuration with vsc:
+	{
+            "name":"Python: Attach",
+            "type":"python",
+            "request":"attach",
+            "port":5678,
+            "host":"localhost",
+            "pathMappings":[{
+                "localRoot":"C:\\Projects\\3PP_A2l\\04_SwBuild\\BuildTools\\Bob",
+                "remoteRoot":".",
+                            }]
+        },
+	
+
