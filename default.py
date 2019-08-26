@@ -15,11 +15,15 @@
 import logging
 import sys
 import argparse
+import subprocess
 try:
   import yaml
 except:
   print("Yaml is not installed properly")
 
+from subprocess import Popen
+from subprocess import PIPE
+from subprocess import STDOUT
 from pathlib import Path
 
 ###################################################################################################
@@ -92,6 +96,20 @@ def init():
     if sys.version_info < (3, 5, 0):
         logger.error("You need Python 3.5 or greater to run this script \n")
         exit(1)
+                    
+    # Check gcc installation or whatever third party program in necessary
+    command = ["gcc.exe", "-v"]
+    try:
+        process = Popen(command, bufsize=1, universal_newlines=True, stdout=PIPE, stderr=STDOUT)
+        # command gcc.exe is known, yet "gcc.exe -v" returns an error code within the spawned process
+        if process.returncode:
+            print("Gcc is required to run this script. No valid gcc installation found. Exiting ...")
+        else:
+            printCurrentAction("Checking gcc installation", "OK")
+    # command gcc.exe is unknown
+    except FileNotFoundError:
+         print("Gcc is required to run this script. No valid gcc installation found. Exiting ...")
+
       
 if __name__ == '__main__':
     # Change context to current path
