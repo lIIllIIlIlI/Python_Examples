@@ -72,4 +72,16 @@ Attached/Remote debugging:
                             }]
         },
 	
+	
+# Integrationsprozess:
+#
+#	1. Bestehenden Code sortieren und modular abtrennen in eine Blackbox und einen Integrationsteil
+#	2. Von der Blackbox sowie dem Integrationsteil Architektur vom IST-Zustand erstellen
+#	3. Von der Blackbox, dem Integrationsteil sowie der Erweiterung Architektur vom SOLL-Zustand erstellen. Dabei sehr 
+#	   kleinschrittig vorgehen und ein gesamtes Datenmodell abbilden.
+#	4. Falls benötigt Blackbox Driver erstellen, der alle späteren Betriebszustände genau abbildet.
+# 	5. Blackbox Test erstellen
+#	6. Separierten Teil Implementieren und mit Blackbox driver testen. Während dem Implementieren Architektur
+#	   falls nötig aktualisieren.
+#	7. Integration & Integrationstests
 
