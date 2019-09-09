@@ -85,3 +85,14 @@ Attached/Remote debugging:
 #	   falls nötig aktualisieren.
 #	7. Integration & Integrationstests
 
+
+# include modules in different folders:
+# 1. case: module is deeper than root:
+#
+#	1. Solution: 'import deeperfolder.mymodule'
+#	2. Solution: create empty __init__.py in deeperfolder and 'import mymodule'. 
+#
+# 2. case: module is somewhere else:
+#	1. Add mymodule to sys path:  'sys.path.insert(0, r'../../my/module/folder')'
+#	2. 'import mymodule'
+#
