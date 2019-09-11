@@ -14,4 +14,9 @@ class A:
     """
     return "<class: %s\n name:%s,\n myString:%s,\n anotherVar:%d>" % (self.__class__.__name__, self.name, self.myString, self.anotherVar)
     
+  def selfCheck(self)
+    """
+    Runs through all member variables and catches invalid combinations that could not be caught during initialization.
+    """
+   
 print(A("greeting", "hello world"))
