@@ -35,6 +35,8 @@ print("If it wasn't already, abs path could be created: {}".format(scriptDir.abs
 print("Note parts, anchor and parent are member variables of object 'Path' and not functions!")
 print("Anyway, it consists of the following parts: {}".format(scriptDir.parts))
 print("The most top level part of the path:  {}".format(scriptDir.name))
+print("The name of the top level part without extension: {}".format(scriptDir.stem)
+print("The extension of the top level part: {}".format(scriptDir.suffix)
 print("The first part of the path:  {}".format(scriptDir.anchor))
 print("Parent of the path: {}".format(scriptDir.parent))
 print("Parent of the parent: {}".format(scriptDir.parent.parent))
