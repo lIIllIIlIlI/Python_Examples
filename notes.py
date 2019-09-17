@@ -96,3 +96,8 @@ Attached/Remote debugging:
 #	1. Add mymodule to sys path:  'sys.path.insert(0, r'../../my/module/folder')'
 #	2. 'import mymodule'
 #
+
+
+# Bei der List comprehension treten bisher unbekannte Seiteneffekte auf:
+#     variablesTypedefs = ([variable.name for variable.name in bswAsap2Vars]) verändert bswAsap2Vars
+# TODO: Beispiele aufstellen und das Verhalten nachvollziehen
