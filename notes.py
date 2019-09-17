@@ -99,5 +99,5 @@ Attached/Remote debugging:
 
 
 # Bei der List comprehension treten bisher unbekannte Seiteneffekte auf:
-#     variablesTypedefs = ([variable.name for variable.name in bswAsap2Vars]) verändert bswAsap2Vars
+variablesTypedefs = ([variable.name for variable in bswAsap2Vars]) verändert bswAsap2Vars
 # TODO: Beispiele aufstellen und das Verhalten nachvollziehen
