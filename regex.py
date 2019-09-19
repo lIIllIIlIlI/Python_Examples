@@ -40,13 +40,20 @@ originalString = "Test string"
 pattern = r'regex'
 extractedString = re.match(pattern, originalString)                                                                                                   
                                                                                                    
-# file operation, DOTALL determines how \n (next line) is handled
+# find all occurences of the regex at a time
 fileString = read(...)                                                                                                   
 pattern = r'regex'
 reObjOfPattern = re.compile(pattern, re.MULTILINE)                                                                                                   
 matches = reObjOfPattern.findall(fileString)
-# There are a couple more functions to delete/replace certain elements of string                                                                                                   
+# There are a couple more functions to delete/replace certain elements of string   
                                                                                                    
+# Catch regex anywhere in line
+re.search(pattern, line)
+
+# Catch regex from start of line
+re.search(pattern, line)
+myMatch = re.search(pattern, line)                                                                                                   
+
  
  Testen der Regex:
  https://regex101.com/r/g0E3qB/1
