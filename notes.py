@@ -101,3 +101,9 @@ Attached/Remote debugging:
 # Bei der List comprehension treten bisher unbekannte Seiteneffekte auf:
 variablesTypedefs = ([variable.name for variable in bswAsap2Vars]) verändert bswAsap2Vars
 # TODO: Beispiele aufstellen und das Verhalten nachvollziehen
+
+# Sort list of dictionaries/objects by value:
+# Make sure the key value is int, not str!
+import operator
+myDictObjectList.sort(key = operator.itemgetter('age'))
+
