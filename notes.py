@@ -51,28 +51,6 @@ for index, elem in enumerate(myList):
 
 ###########################################################################################################
 
-Attached/Remote debugging:
-
-1. Install module ptvsd
-2. Insert following lines in code:
-	import ptvsd
-	# 5678 is the default attach port in the VS Code debug configurations
-	ptvsd.enable_attach(address=('localhost', 5678), redirect_output=True)
-	ptvsd.wait_for_attach()
-3. Create Attach debug configuration with vsc:
-	{
-            "name":"Python: Attach",
-            "type":"python",
-            "request":"attach",
-            "port":5678,
-            "host":"localhost",
-            "pathMappings":[{
-                "localRoot":"C:\\Projects\\3PP_A2l\\04_SwBuild\\BuildTools\\Bob",
-                "remoteRoot":".",
-                            }]
-        },
-	
-	
 # Integrationsprozess:
 #
 #	1. Bestehenden Code sortieren und modular abtrennen in eine Blackbox und einen Integrationsteil
