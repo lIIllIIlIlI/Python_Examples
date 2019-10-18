@@ -62,3 +62,6 @@ if scriptDir.is_dir():
       
 # Deleting specific file
 os.remove(file)
+      
+# move file
+shutil.move(src, dest)
