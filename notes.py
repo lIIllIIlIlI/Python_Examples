@@ -85,3 +85,6 @@ variablesTypedefs = ([variable.name for variable in bswAsap2Vars]) verändert bs
 import operator
 myDictObjectList.sort(key = operator.itemgetter('age'))
 
+# get object with certain value of a key:
+male_subset_gen = filter(lambda x: x.sex == 'm', people_set)
+
