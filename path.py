@@ -65,3 +65,13 @@ os.remove(file)
       
 # move file
 shutil.move(src, dest)
+
+
+# Add path to import other python modules from  different projects. This is quite a dirty hack, the project should contain
+# all required skripts. Helper modules should be deposited in default python pathes. Configs should be stored in a config files 
+# and not be included as a module
+sys.path.insert(0, r'relative/path/myPython.py')
+import myPython
+
+
+
