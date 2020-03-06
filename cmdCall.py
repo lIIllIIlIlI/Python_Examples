@@ -10,24 +10,32 @@ try:
     if process.returncode:
         print("Cmd was spawned successfully, yet an error occuring during the execution of the command")
 
+    # ---- combined output ----
     # communicate() can only be assigned once
     fullOutput = process.communicate()
     print("Full output: {}\n\n".format(fullOutput))
 
-    # alternative
-    # stdout, stderr = process.communicate()
-    # print("Normal output: {}", stdout)
-    # print("Error output: {}", stderr)
+    # ---- separated output ----
+    stdout, stderr = process.communicate()
+    print("Normal output: {}", stdout)
+    print("Error output: {}", stderr)
 
-    # alternative
-    # Greedy output
-    # lineCounter = 0
-    # for line in iter(process.stdout.readline, ''):
-        # Some process will not terminate but coninuously print blank lines
-        # this might be solved with a counter
-        # if(lineCounter < 50):
-            # print(line)
-            # lineCounter += 1
+    # ---- greedy output ----
+    for line in iter(process.stdout.readline, ''):
+        print(line)
+
+    # ---- some processes wont terminate but keep printing black lines ----
+    lineCounter = 0
+    prevLine = ''
+    for line in iter(process.stdout.readline, ''):
+        print(line)
+         if line == prevLine:
+             lineCounter += 1
+             if lineCounter > 50:
+             break
+     else:
+         prevLine = line
+         lineCounter = 0
 
 except Exception as exceptionError:
     print("Command {} can't be started. Error message: {}".format(command, exceptionError))
