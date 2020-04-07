@@ -101,3 +101,5 @@ from operator import attrgetter
 map(attrgetter('my_attr'), my_list)
 
 
+*args, **kws: args are skalars, kws are dict items.
+
