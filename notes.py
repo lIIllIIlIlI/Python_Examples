@@ -103,3 +103,7 @@ map(attrgetter('my_attr'), my_list)
 
 *args, **kws: args are skalars, kws are dict items.
 
+# Create an object list from uniform yaml file
+with open('employees.yaml') as f:
+        employees = [Employee(**empl) for empl in yaml.safe_load(f)]
+
