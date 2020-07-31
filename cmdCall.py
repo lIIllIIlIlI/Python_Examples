@@ -55,20 +55,18 @@ def runCommand(command):
     Output: output list
         List of stderr and stdout lines that the command cmd call generated
     """
-    output = []
-    process = subprocess.Popen(command, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, \
+    process = subprocess.run(command, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, \
                          text = True, shell = True)
     if process.returncode:
-        errorMessage = "".join([line for line in process.stderr])
-        print("Command {} returned with error status {}. The process reported the \
-following errors:\n{}".format(command, process.returncode, errorMessage))
-    for line in process.stdout:
-        output.append(line.rstrip())
-    return output
+        print("Command {} returned with error status {}".format(command, process.returncode))
+    return process.stdout
 
 # EXAMPLE0
+print('*** EXAMPLE0: Default call to gcc ***')
 output = runCommand(["gcc", "-v"])
-
+print(output)
+#for line in output.splitlines():
+    #print(line)
 
 print("\n")
 print('*** EXAMPLE1: Grep version from "gcc -v" output that prints everything to stderr ***')
@@ -76,7 +74,7 @@ gccVersion = None
 gccVersionRegex = r'gcc version (?P<version>\d+\.\d+\.\d+)'
 command = ['gcc', '-v']
 outputRegex = r'gcc version (?P<version>\d+\.\d+\.\d+)'
-process = subprocess.Popen(command, stdout = subprocess.PIPE, stderr = subprocess.STDOUT, \
+process = subprocess.run(command, stdout = subprocess.PIPE, stderr = subprocess.PIPE, \
                          text = True, shell = True)
 # stdout contains both stdout and stderr
 if process.stdout is not None:
@@ -96,10 +94,10 @@ print("\n")
 
 print('*** EXAMPLE2: run svn info, print warnings only ***')
 command = ['svn', 'info', 'C:\\Projects\\SW26.01']
-process = subprocess.Popen(command, stdout = subprocess.PIPE, stderr = subprocess.PIPE, \
-                         text = True, shell = True)
+process = subprocess.run(command, stdout = subprocess.PIPE, stderr = subprocess.PIPE, \
+                         text = True, shell = True, encoding = "utf-8")
 if process.stdout is not None:
-    for line in process.stdout:
+    for line in process.stdout.splitlines():
         print(line.rstrip())
 if process.returncode:
     errorMessage = "".join([line for line in process.stderr])
