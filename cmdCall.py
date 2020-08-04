@@ -77,8 +77,8 @@ outputRegex = r'gcc version (?P<version>\d+\.\d+\.\d+)'
 process = subprocess.run(command, stdout = subprocess.PIPE, stderr = subprocess.PIPE, \
                          text = True, shell = True)
 # stdout contains both stdout and stderr
-if process.stdout is not None:
-    for line in process.stdout:
+if process.stdout:
+    for line in process.stdout.splitlines():
         if re.search(gccVersionRegex, line):
             gccVersion = re.search(gccVersionRegex, line).group("version")
 if process.returncode:
