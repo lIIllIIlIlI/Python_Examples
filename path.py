@@ -43,13 +43,14 @@ print("Parent of the parent: {}".format(scriptDir.parent.parent))
 relPath = "../../test"
 print("When mixing absolut with relative path, remember to resolve the path: {}".format((scriptDir / relPath).resolve())
 
-# Alle Ordner und Datein im Ordner listen:
-for element in scriptDir.glob('*.*'):
-    print("Name of found elements (Membervariable of Path obj): {}".format(element.name))
+# Alles im ordner listen
+print(sorted(Path('.').glob('*')))
 
-# Rekursiv
-for element in scriptDir.rglob('*.*'):
-    print("Name of found elements (Membervariable of Path obj): {}".format(element.name))
+# Alle python files bis drei Stufen listen
+print(sorted(Path('.').glob('*/*/*.py')))
+      
+# Rekursiv alle Python files listen: 
+print(sorted(Path('.').glob('**/*.py')))
       
 # Creating directory
 if not scriptDir.is_dir():
@@ -57,15 +58,17 @@ if not scriptDir.is_dir():
       
 # Deleting directory recursively
 if scriptDir.is_dir():
-   shutil.rmtree(scriptDir, ignore_errors=True)
+   print("Script is about to erase {}.".format(scriptDir))
+   input("Press any button to continue")
+   shutil.rmdir(scriptDir, ignore_errors=True)
+   # Path.rmdir() will only remove empty directories
    # ignore_errors will even delete read only files, basically everything in the folder
       
 # Deleting specific file
-os.remove(file)
+Path.unlink(file)
       
 # move file
-shutil.move(src, dest)
-
+src.rename(dest)
 
 # Add path to import other python modules from  different projects. This is quite a dirty hack, the project should contain
 # all required skripts. Helper modules should be deposited in default python pathes. Configs should be stored in a config files 
