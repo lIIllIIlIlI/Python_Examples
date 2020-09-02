@@ -13,6 +13,7 @@
 # 5. Google, create a forum thread about multiple loggers, play around with temporary adding file handlers
 # 6. Read about how to implement logger for libraries
 # 7. Insert an error logger that pipes the error/critical message in yet another error.log logfile
+# 8. Play around with multiple loggers in a module, for exemple for different parts of the module
 
 # Print detailed infos about the error of a try block
 # logger.info("unexpected exception", exc_info=True) 
