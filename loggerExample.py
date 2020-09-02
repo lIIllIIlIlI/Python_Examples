@@ -1,10 +1,18 @@
+# TODO: Create an example project with multiple Modules as well as a CONF and a LOG folder. Create a config for a logger and store it in
+# CONFIG with a file logger to LOG/logger.log. In the main function, register the root logger and simply call the logger in all child 
+# modules.
+# rel: https://stackoverflow.com/questions/15727420/using-logging-in-multiple-modules (not the accepted answer, dont be lazy, scroll!)
+
 # Print detailed infos about the error of a try block
 # logger.info("unexpected exception", exc_info=True) 
        
 # Print stack information
 # logger.info("finished the operation", stack_info=True)
 
-# Logger are always global for a project, mby the registering is unnecessary
+# Logger are always global for a project, the registering is unnecessary. Simply import the config in the main module and a simple
+# logger.getLogger(__name__) in the child will do the job. 
+
+# make sure to deactivate other loggers when loading the logger, it's a config parameter
 
 # Always use logger.info("string template %s",argument) to save up computation time
 
