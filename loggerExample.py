@@ -6,7 +6,7 @@
 # Question left: How to use multiple loggers? Use only one global logger, temporary add yet another file handler and delete is afterwards
 
 # Work steps:
-# 1. Create example project
+# 1. Create example project https://docs.python.org/3/howto/logging.html#logging-from-multiple-modules
 # 2. Create a config 
 # 3. Load and test config in main module
 # 4. Use and test logger in other modules
