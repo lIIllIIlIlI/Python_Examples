@@ -2,6 +2,17 @@
 # CONFIG with a file logger to LOG/logger.log. In the main function, register the root logger and simply call the logger in all child 
 # modules.
 # rel: https://stackoverflow.com/questions/15727420/using-logging-in-multiple-modules (not the accepted answer, dont be lazy, scroll!)
+# Questions left: How to implement libraries? https://docs.python.org/3/howto/logging.html#configuring-logging-for-a-library
+# Question left: How to use multiple loggers? Use only one global logger, temporary add yet another file handler and delete is afterwards
+
+# Work steps:
+# 1. Create example project
+# 2. Create a config 
+# 3. Load and test config in main module
+# 4. Use and test logger in other modules
+# 5. Google, create a forum thread about multiple loggers, play around with temporary adding file handlers
+# 6. Read about how to implement logger for libraries
+# 7. Insert an error logger that pipes the error/critical message in yet another error.log logfile
 
 # Print detailed infos about the error of a try block
 # logger.info("unexpected exception", exc_info=True) 
