@@ -67,6 +67,10 @@ if scriptDir.is_dir():
 # Deleting specific file
 Path.unlink(file)
       
+# Create dir
+dirPath = Path("Path/to/dir")
+dirPath.(parents=True, exist_ok=True)
+      
 # move file
 src.rename(dest)
 
