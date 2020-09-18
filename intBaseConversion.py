@@ -15,3 +15,13 @@ myAlphaHex = int(myAlphaHexString,16)
 
 mergedHex = myHex + myAlphaHex + myOffset
 print("Offset added to hex: {}. New hex number:{}".format(mergedHex, hex(mergedHex)))
+
+def insertHexPadding(hexString, paddingWidth):
+    """
+    Pads the given hexadecimal string with zeros to reach the desired paddingWidth in lenght.
+    """
+    if(hexString[:2] != "0x"):
+        logger.warning("Can't insert padding in non-hexadecimal string")
+    else:
+        hexString = hexString[:2] + hexString[2:].zfill(paddingWidth)
+    return hexString
