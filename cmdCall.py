@@ -3,6 +3,10 @@ import re
 from pathlib import Path
 import sys
 
+# Problem: Is another python script is calle via subprocess, the returncode has to be set manually.
+#          A fatal error might raise an exception, yet the returncode remains 0. Therefore, the 
+#          spawned process does not detect the failed execution.
+
 # NOTES ############################################################################################
 # text=True will convert the output to ASCII to avoid the trailing b'' annotation
 #
