@@ -51,6 +51,7 @@ print(sorted(Path('.').glob('*/*/*.py')))
       
 # Rekursiv alle Python files listen: 
 print(sorted(Path('.').glob('**/*.py')))
+print(sorted(Path(Path("my/path") / '.').glob('**/*.py')))
       
 # Creating directory
 if not scriptDir.is_dir():
