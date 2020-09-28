@@ -89,7 +89,7 @@ if process.returncode:
     errorMessage = "".join([line for line in process.stderr])
     print("Command {} returned with error status {}. The process reported the \
 following errors:\n{}".format(command, process.returncode, errorMessage))
-if gccVersion is None:
+if not gccVersion:
     print("Warning: Could not receive the gcc version")
 else:
     print("Extracted gcc version: {}".format(gccVersion))
