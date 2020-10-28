@@ -2,8 +2,6 @@ __new__ vs __init__:
 
 new wird in Metaklassen verwendet um zu bestimmen, wie ein Object der Klasse kreiert wird. Init wird aufgerufen, um eine Instanz der Klasse zu initialisieren.
 
-
-
 Super:
 
 Is used to access inherited functions. Super is called by "super().methodname(args)" which is a shortcut for "super(subClass, instance).method(args)". Example:
@@ -33,7 +31,6 @@ the super function automatically calls the newer function. This make the code mu
 large class structures.
 
 
-
 Meta class:
 
     Eine Metaklasse definiert das verhalten einer Klasse. Eine Klasse instanziiert Objekte, eine Metaklasse instanziiert Klassen und erlaubt die erstellung zu customizen.
@@ -48,21 +45,53 @@ Meta class:
     Die meisten Probleme lassen sich statt mit Metaklassen besser mit decorators oder monkey patching lösen.
 
 
-
-
 Abstract class:
 
-Die abstrakte klasse ist eine Implementierung der Meta class.
+    Die abstrakte klasse ist eine Implementierung der Meta class.
+    Sie kann nicht instanziiert werden.
+    Alle Kinder der Klasse müssen alle definierten Methoden implementieren#
+    Die Methoden der Abstrakten Klasse können über das super Keyword angesprochen werden
 
+    from abc import ABC
+    from abc import abstractmethod
 
+    class abstractClass(ABC):
+        def __init__(self):
+            print("Hello ")
+            return
+     @abstractmethod
+        def printer(self):
+            print("im printer")
+            return
+
+    class derivedClass(abstractClass):
+
+        def __init__(self):
+            super().__init__()
+            print("World!")
+            return
+
+        def printer(self):
+            print("Hello world, ")
+            super().printer()
+            return
 
 Singleton:
 
-Die Singleton class ist eine Implementierung der Meta class.
+    Singletons sind unter Python nativ nicht verfügbar. Es gibt mehrer Lösungen, das Konstrukt nachzubauen. Die Pythonic Lösung dafür ist die Verwendung von metaclasses.
+    class Singleton(type):
+
+        _instances = {}
+        def __call__(cls, *args, **kwargs):
+            if cls not in cls._instances:
+                cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+            return cls._instances[cls]
+
+    class MyClass(BaseClass, metaclass=Singleton):
+        pass
 
 
-
-Decorators:
+Decorators
 
     Ein decorator ist die Light Version einer Metaklasse. Er erhält das Objekt eines bestimmten Types, modelliert es und gibt es anschließend wieder zurück.
     Im Falle einer Funktion wird eine Funktion in den Decorator reingegeben und eine zurückgegeben, er agiert also als Wrapper.  
@@ -86,3 +115,39 @@ Decorators:
 
     Das ganze funktioniert nicht nur mit Funktionen, sondern auch mit Klassen und stellt häufig eine deutliche einfachere Alternative zu Metaklassen dar
 
+Dataclasses
+
+    Datenklassen werden verwendet, um Initialisierungcode zu sparen. Wenn eine Klasse während der Initialisierung eine lange liste von Variablen einfach nur zuweist und sie nicht weiter verarbeitet, dann kann die Datenklasse diesen Job automatisieren. Die Initi Funktion wird automatisch eingefügt und definiert die Membervariablen hintereinander weg. Das Funktioniert nur solange die init ansonsten keine Funktionalität erfüllt.
+
+    @dataclass
+    class InventoryItem:
+        '''Class for keeping track of an item in inventory.'''
+        name: str
+        unit_price: float
+        quantity_on_hand: int = 0
+
+        def total_cost(self) -> float:
+            return self.unit_price * self.quantity_on_hand
+
+Property
+
+    Abstrahiert setter und getter. Wird anschließend auf die besagt variable zugegriffen, wird python automatisch den dafür vorgesehenen Getter oder Setter aufrufen.Beachte: Die Temerpatur wird als private deklariert, von außen aber direkt als "object.temperatur" statt "object._temperatur" angesprochen. Das gleiche gilt für Methoden der Klasse, hier "to_fahrenheit".
+
+    class Celsius:
+        def __init__(self, temperature = 0):
+            self._temperature = temperature
+
+        def to_fahrenheit(self):
+            return (self.temperature * 1.8) + 32
+
+        @property
+        def temperature(self):
+            print("Getting value")
+            return self._temperature
+
+        @temperature.setter
+        def temperature(self, value):
+            if value < -273:
+                raise ValueError("Temperature below -273 is not possible")
+            print("Setting value")
+            self._temperature = value
