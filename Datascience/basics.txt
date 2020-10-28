@@ -1,0 +1,10 @@
+- Dataframes können in excel Dateien geschrieben oder gelesen werden
+- Ein Dataframe ist eine Matrix
+- Eine Series ist ein Array
+- Panda baut auf Numpy auf. Numpy ist eine Zwischenstufe der Abstraktion. Beispielsweise wird eine Series aus einem Numpy Array gebildet. Das Numpy Array is bereits mächtiger als eine List, die Series hat schließlich die voll Python Data Science Power.
+- In ein Series Object kann ein Skalar, eine Liste, ein Numpy Array oder ein dict geworfen werden. Das Objekt bietet Funktionen zum sortieren, plotten, IO, mathematische Operationen oder zum Verändern einzelner Elemente. Ungefähr die gleichen Operationen gibt es für Dataframes.
+- Eine Series ist ein Spezialfall des Dataframes
+- Für spezielle Daten, zb der Zeit, setzt Panda seine eigenen Panda Arrays ein statt auf die Numpy Arrays zurückzugreifen. Diese Arrays werden jeweils durch eine Klasse repräsentiert, zb Timestamp, Timedelta, Period oder Interval.
+- Panels (3-dimensionale Matrizen) sind depracated
+- Jeder Panda Datentyp enthält ein Index Objekt. Das Index Objekt bietet eine Reihe an Funktionen. Diese Funktionen können jedoch auch direkt auf das Python Objekt angewendet werden und werden anschließend an den Index heruntergereicht.
+- Mit Windows werden laufende Daten verarbeitet, zb der Movibg Average über die eingehenden Meßdaten erhoben.
