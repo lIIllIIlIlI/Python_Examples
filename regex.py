@@ -57,6 +57,8 @@ myMatch = re.search(pattern, line)
 # substitute     - NOTE: string.replace("old string", "new string) doesn't work for some reason
 string = re.sub(r'stringToBeReplaced', "new string", string)
 
- 
+ Hex Pattern = r'0x[0-9a-fA-F]'
+                                                                                                   
+                                                                                                   
  Testen der Regex:
  https://regex101.com/r/g0E3qB/1
