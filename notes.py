@@ -107,3 +107,7 @@ map(attrgetter('my_attr'), my_list)
 with open('employees.yaml') as f:
         employees = [Employee(**empl) for empl in yaml.safe_load(f)]
 
+# Convert fomula into integer
+formulaString = "((2u) + ((4u) + (4u) + (4u) ) + (((2u) + (4u) ) * (16u)))"
+formulaStringCleaned = re.sub("[u|U]", "", formulaString)
+integer = eval(formulaString)
