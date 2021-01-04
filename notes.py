@@ -110,4 +110,4 @@ with open('employees.yaml') as f:
 # Convert fomula into integer
 formulaString = "((2u) + ((4u) + (4u) + (4u) ) + (((2u) + (4u) ) * (16u)))"
 formulaStringCleaned = re.sub("[u|U]", "", formulaString)
-integer = eval(formulaString)
+integer = eval(formulaStringCleaned)
