@@ -4,9 +4,15 @@
 # Keyring module will automatically detect the installed default keyring.
 
 import keyring
-
-# store password in keyring
-keyring.set_password('twitter', 'myAccount', 'myPassword')
+import getpass 
 
 # retrieve password
-keyring.get_password('twitter', 'myAccount')
+twitterPassword = keyring.get_password('twitter', 'twitterAccount')
+
+if not twitterPassword:
+  twitterPassword = getpass.getpass(prompt='Enter your twitter password') 
+  # store password in keyring
+  keyring.set_password('twitter', 'twitterAccount', 'twitterPassword')
+
+print(twitterPassword)
+
