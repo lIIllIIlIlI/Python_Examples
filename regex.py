@@ -57,6 +57,12 @@ myMatch = re.search(pattern, line)
 # substitute     - NOTE: string.replace("old string", "new string) doesn't work for some reason
 string = re.sub(r'stringToBeReplaced', "new string", string)
 
+# Python cant help but interpret backslashes, which causes problem when replaceing something with a path.
+# Solution: Convert / to // 
+# Note: / needs to be escaped
+backslashedFilePath = re.sub(r'\\', r'\\\\', backslashedFilePath, 0, re.DOTALL)
+                                                                                                   
+                                                                                                   
  Hex Pattern = r'0x[0-9a-fA-F]'
                                                                                                    
                                                                                                    
