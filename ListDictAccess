@@ -1,0 +1,8 @@
+# Get specific key of dictionary, e.g. 'b'
+myDict = {'a':1, 'b':2}
+secondKey = list(myDict.keys())[1]
+
+# iteration over list
+for index, value in enumerate(myList)
+
+# iteration over dict
