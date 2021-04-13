@@ -53,33 +53,31 @@ print(sorted(Path('.').glob('*/*/*.py')))
 print(sorted(Path('.').glob('**/*.py')))
 print(sorted(Path(Path("my/path") / '.').glob('**/*.py')))
       
-# Creating directory
+# Create dir
 if not scriptDir.is_dir():
-   os.makedirs(scriptDir)
+   scriptDir.mkdirs()
+   # create recursively
+   scriptDir.mkdirs(parents=True)
+   # ignore errors
+   scriptDir.mkdirs(parents=True, exist_ok=True)
       
-# Deleting directory recursively
+# Remove empty dir
+if scriptDir.is_dir():
+   scriptDir.rmdir()
+      
+# Remove non empty dir recursively
 if scriptDir.is_dir():
    print("Script is about to erase {}.".format(scriptDir))
    input("Press any button to continue")
-   shutil.rmdir(scriptDir, ignore_errors=True)
-   # Path.rmdir() will only remove empty directories
    # ignore_errors will even delete read only files, basically everything in the folder
+   shutil.rmdir(scriptDir, ignore_errors=True)
       
-# Deleting specific file
-Path.unlink(file)
-      
-# Create dir
-dirPath = Path("Path/to/dir")
-dirPath.(parents=True, exist_ok=True)
+# Delete file
+if scriptFile.is_file():
+    scriptFile.unlink()
       
 # move file
 src.rename(dest)
-
-# Add path to import other python modules from  different projects. This is quite a dirty hack, the project should contain
-# all required skripts. Helper modules should be deposited in default python pathes. Configs should be stored in a config files 
-# and not be included as a module
-sys.path.insert(0, r'relative/path/myPython.py')
-import myPython
 
 
 
