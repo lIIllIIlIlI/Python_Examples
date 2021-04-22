@@ -68,3 +68,10 @@ backslashedFilePath = re.sub(r'\\', r'\\\\', backslashedFilePath, 0, re.DOTALL)
                                                                                                    
  Testen der Regex:
  https://regex101.com/r/g0E3qB/1
+                                                                                                   
+                                                                                                   
+
+# remove certain ASCII elements from string:
+# re.sub is to complex for this simple szenario                                                                                                   
+myString = "Hello world"
+myString = myString.replace("e", "")                                                                                                   
