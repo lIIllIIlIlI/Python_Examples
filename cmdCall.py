@@ -18,7 +18,7 @@ import sys
 #       3. Failed operation kills the python execution, try/catch required
 #
 # Subprocess executes the command internally and ignores PATH. If elements in Path are required, pass
-# shell = True
+# shell = True, yet this is not recommended because it might cause a variety of side effects.
 #
 # The function communicate() return the whole thing while process.stdout holds small buffers. Therefore
 # communication() might kill windows or be killed by windows for buffer oberflows. Therefore, avoid the
