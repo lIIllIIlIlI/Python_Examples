@@ -5,4 +5,7 @@ secondKey = list(myDict.keys())[1]
 # iteration over list
 for index, value in enumerate(myList)
 
+from operator import attrgetter
+map(attrgetter('my_attr'), my_list)
+
 # iteration over dict
