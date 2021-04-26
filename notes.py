@@ -89,18 +89,6 @@ myDictObjectList.sort(key = operator.itemgetter('age'))
 male_subset_gen = filter(lambda x: x.sex == 'm', people_set)
 
 
-
-
-A list comprehension would work just fine:
-
-[o.my_attr for o in my_list]
-
-But there is a combination of built-in functions, since you ask :-)
-
-from operator import attrgetter
-map(attrgetter('my_attr'), my_list)
-
-
 *args, **kws: args are skalars, kws are dict items.
 
 # Create an object list from uniform yaml file
