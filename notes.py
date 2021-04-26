@@ -100,7 +100,8 @@ formulaString = "((2u) + ((4u) + (4u) + (4u) ) + (((2u) + (4u) ) * (16u)))"
 formulaStringCleaned = re.sub("[u|U]", "", formulaString)
 integer = eval(formulaStringCleaned)
 
-
+# Ensure certain python version
+assert sys.version_info >= (3, 5)
 
 # Add path to import other python modules from  different projects. This is quite a dirty hack, the project should contain
 # all required skripts. Helper modules should be deposited in default python pathes. Configs should be stored in a config files 
