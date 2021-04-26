@@ -133,6 +133,18 @@ the process.")
 # process.terminate()
 
 
+print('*** EXAMPLE4: Ensure tool is installed ***')
+    command = ["gcc.exe", "-v"]
+    try:
+        process = subprocess.run(command, bufsize=1, universal_newlines=True, stdout=PIPE, stderr=STDOUT, shell=True)
+        # command gcc.exe is known, yet "gcc.exe -v" returns an error code within the spawned process
+        if process.returncode:
+            print("Gcc is required to run this script. No valid gcc installation found. Exiting ...")
+        else:
+            printCurrentAction("Checking gcc installation", "OK")
+    # command gcc.exe is unknown
+    except FileNotFoundError:
+         print("Gcc is required to run this script. No valid gcc installation found. Exiting ...")
 
 
 
