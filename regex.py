@@ -1,16 +1,55 @@
-# Playground: https://regex101.com/  (Change regex to python!!)
+******* Notes:
+- Playground: https://regex101.com/  (Change regex to python!!)
+- special characters have to be escaped, including the escape symbol. Example: '[' is catched by \[, '\' is catched by '\\'
+- Optional word: (regex)?                                                                                                  
+- Naming a group: (?P<name>regex)
+- Noncapturing group: (?:regex)    
+- not \xy --> \XY                                                                                              
+- Hex Pattern = r'0x[0-9a-fA-F]'
+     
+         
+                                                                                                   
+******* Basic Examples:                                                                                                   
+# Catch regex anywhere in line
+if re.search(pattern, line):
+  myMatch = re.search(pattern, line).group(0)                                                                                                   
+
+# Catch regex from start of line
+if re.match(regex, line):
+  myMatch = re.match(regex, line).group(0)                                                                                                   
+
+# substitute
+myString = myString.replace("e", "")                                                                                                    
+                                                                                                   
+# substitute via regex
+string = re.sub(regex, replacement, string)
+                                                                                                   
+         
+                                                                                                   
+******* Advanced Examples:                                                                                                   
+# find all occurences of the regex at a time
+fileString = read(...)                                                                                                   
+pattern = r'regex'
+reObjOfPattern = re.compile(pattern, re.MULTILINE)                                                                                                   
+matches = reObjOfPattern.findall(fileString)                                                                                                 
+                                                                                                   
+
+                                                                                                                                                                                                                                                                                                     
+******* Special Examples:
+# Python cant help but interpret backslashes, which causes problem when replaceing something with a path.
+# Solution: Convert \ to \\ 
+# Note: \ needs to be escaped
+backslashedFilePath = re.sub(r'\\', r'\\\\', backslashedFilePath, 0, re.DOTALL)
+
+                                                                                                   
+
 
 .   matches any character
 \d 	digit
-\D 	non-digit
 \s 	whitespace: [ \t\n\r\f\v]
-\S 	non-whitespace
 \w 	alphanumeric: [0-9a-zA-Z_]
-\W 	non-alphanumeric
 \d 	digit
-\D 	non-digit
 \s 	whitespace: [ \t\n\r\f\v]
-\S 	non-whitespace
 
 ^ 	matches beginning of string
 $ 	matches end of string
@@ -24,54 +63,7 @@ $ 	matches end of string
 
 {m} 	exactly mm occurrences
 {m, n} 	from m to n. m defaults to 0, n to infinity
-{m, n}? 	from m to n, as few as possible
+{m, n}? 	from m to n, as few as possible                                                                         
 
-\w 	alphanumeric: [0-9a-zA-Z_]  // variable name
-\W 	non-alphanumeric
-
-Special notes:
-- special characters have to be escaped, including the escape symbol. Example: '[' is catched by \[, '\' is catched by '\\'
-- Optional word: (regex)?                                                                                                  
-- Naming a group: (?P<name>regex)
-- Noncapturing group: (?:regex)                                                                                              
-  
-# line operation                                                                                                 
-originalString = "Test string"                                                                                                  
-pattern = r'regex'
-extractedString = re.match(pattern, originalString)                                                                                                   
-                                                                                                   
-# find all occurences of the regex at a time
-fileString = read(...)                                                                                                   
-pattern = r'regex'
-reObjOfPattern = re.compile(pattern, re.MULTILINE)                                                                                                   
-matches = reObjOfPattern.findall(fileString)
-# There are a couple more functions to delete/replace certain elements of string   
-                                                                                                   
-# Catch regex anywhere in line
-re.search(pattern, line)
-
-# Catch regex from start of line
-re.search(pattern, line)
-myMatch = re.search(pattern, line)                                                                                                   
-
-# substitute     - NOTE: string.replace("old string", "new string) doesn't work for some reason
-string = re.sub(r'stringToBeReplaced', "new string", string)
-
-# Python cant help but interpret backslashes, which causes problem when replaceing something with a path.
-# Solution: Convert / to // 
-# Note: / needs to be escaped
-backslashedFilePath = re.sub(r'\\', r'\\\\', backslashedFilePath, 0, re.DOTALL)
-                                                                                                   
-                                                                                                   
- Hex Pattern = r'0x[0-9a-fA-F]'
-                                                                                                   
-                                                                                                   
- Testen der Regex:
- https://regex101.com/r/g0E3qB/1
-                                                                                                   
-                                                                                                   
-
-# remove certain ASCII elements from string:
-# re.sub is to complex for this simple szenario                                                                                                   
-myString = "Hello world"
-myString = myString.replace("e", "")                                                                                                   
+                                                                                               
+                                                                                                  
