@@ -2,8 +2,7 @@
 - Playground: https://regex101.com/  (Change regex to python!!)
 - special characters have to be escaped, including the escape symbol. Example: '[' is catched by \[, '\' is catched by '\\'
 - Optional word: (regex)?                                                                                                  
-- Naming a group: (?P<name>regex)
-- Noncapturing group: (?:regex)    
+- Naming a group: (?P<name>regex)  
 - not \xy --> \XY                                                                                              
 - Hex Pattern = r'0x[0-9a-fA-F]'
      
@@ -43,27 +42,19 @@ backslashedFilePath = re.sub(r'\\', r'\\\\', backslashedFilePath, 0, re.DOTALL)
 
                                                                                                    
 
-
+******* Regex creation:
 .   matches any character
 \d 	digit
 \s 	whitespace: [ \t\n\r\f\v]
 \w 	alphanumeric: [0-9a-zA-Z_]
 \d 	digit
-\s 	whitespace: [ \t\n\r\f\v]
-
-^ 	matches beginning of string
-$ 	matches end of string
-
-[5b-d] 	  matches any chars '5', 'b', 'c' or 'd'
-[^a-c6] 	matches any char except 'a', 'b', 'c' or '6'
-[a|b]     matches either a or b
-
-* 	0 or more 
-+ 	1 or more 
-
+[^a] matches any char except 'a'
+* 0 or more 
++ 1 or more 
 {m} 	exactly mm occurrences
 {m, n} 	from m to n. m defaults to 0, n to infinity
 {m, n}? 	from m to n, as few as possible                                                                         
 
-                                                                                               
+^ 	matches beginning of string
+$ 	matches end of string                                                                    
                                                                                                   
