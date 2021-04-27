@@ -48,3 +48,24 @@ def insertHexPadding(hexString, paddingWidth):
     else:
         hexString = hexString[:2] + hexString[2:].zfill(paddingWidth)
     return hexString
+
+def convertToCleanDecimal(value):
+    """
+    Converts an extracted bin or hex value to a clean decimal value.
+    Removes '(', ')', 'u' and 'U'. Values that are already clean and 
+    decimal are returned untouched.
+    
+    Example: (0x3d)U --> 61
+              0b01 --> 1
+    """
+    hexRegex = r'0x[0-9a-fA-F]'
+    binPattern = r'0b[0-1]'
+    if value:
+        if re.search(hexRegex, value) or re.search(binPattern, value):
+            value = re.sub(r'[u|U]', "", value)
+            value = re.sub(r'[\(|\)]', "", value)
+        if re.search(hexRegex, value):
+            value = int(value, 16)
+        elif re.search(binPattern, value):
+            value = int(value, 2)
+    return value
