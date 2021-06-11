@@ -15,6 +15,9 @@ os.chdir(Path(__file__).parent)
 scriptDir = Path.cwd()
 print("Script directory (Path.cwd()): {}". format(scriptDir))
 
+# path to script that is currently executed
+scriptPath = Path(__file__).parent.absolute()
+
 logDir = scriptDir / "Logfile" / "mylogfil.log"
 print("logDir: {}".format(logDir))
 
