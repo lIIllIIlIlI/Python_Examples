@@ -57,4 +57,8 @@ backslashedFilePath = re.sub(r'\\', r'\\\\', backslashedFilePath, 0, re.DOTALL)
 
 ^ 	matches beginning of string
 $ 	matches end of string                                                                    
-                                                                                                  
+                                 
+                                                                                                   
+
+# To make a group optional, simple put a '?' behind the group. Take care of surrounding spaces. 
+regex = '(?P<number>\d+)?                                                                                                   
