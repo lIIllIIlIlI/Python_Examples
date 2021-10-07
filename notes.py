@@ -108,3 +108,8 @@ assert sys.version_info >= (3, 5)
 # and not be included as a module
 sys.path.insert(0, r'relative/path/myPython.py')
 import myPython
+
+
+# if you are uncertain if a dictionary exists, check it before accessing it
+if myDict and key in myDict:
+    print("found key")
