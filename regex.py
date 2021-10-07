@@ -61,4 +61,5 @@ $ 	matches end of string
                                                                                                    
 
 # To make a group optional, simple put a '?' behind the group. Take care of surrounding spaces. 
-regex = '(?P<number>\d+)?                                                                                                   
+regex = '(?P<number>\d+)?          
+                                                                                                   
