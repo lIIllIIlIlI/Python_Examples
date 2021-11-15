@@ -113,3 +113,6 @@ import myPython
 # if you are uncertain if a dictionary exists, check it before accessing it
 if myDict and key in myDict:
     print("found key")
+
+
+# Try/except blocks prevent keyboard interrupts, having bigger code parts within those blocks is bad practice.
