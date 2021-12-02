@@ -114,5 +114,35 @@ import myPython
 if myDict and key in myDict:
     print("found key")
 
-
 # Try/except blocks prevent keyboard interrupts, having bigger code parts within those blocks is bad practice.
+
+# Underscores:
+class Test():
+	def __init__():
+		# public variable, access for everyone
+		self.a = 0 
+		# protected, access for class and subclasses
+		# protection has to be manually implemented via setter/getter
+		self._b = 1
+		# private, access for class only
+		# python protects c by renaming it internally to _<class_name>__c, preventing accidental access
+		self.__c = 2
+	def a():
+		"""
+		Accessible from everywhere
+		"""
+		return
+	def _b():
+		"""
+		Accessible by class and subclasses
+		"""
+		return
+	def __c():
+		"""
+		Accessible by class only
+		"""
+		return
+# Unautorized variable access in a threat to objects, but not to functions.
+# If someone has a deep wish to access your local module functions, it doesnt 
+# need to bother you. Therefore, mark them with a single underscore and rely
+# on the user for some common sense. 
