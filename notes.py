@@ -68,7 +68,7 @@ for index, elem in enumerate(myList):
 # 1. case: module is deeper than root:
 #
 #	1. Solution: 'import deeperfolder.mymodule'
-#	2. Solution: create empty __init__.py in deeperfolder and 'import mymodule'. 
+#	2. Solution: create empty __init__.py in deeperfolder and 'from deepfolder import mymodule'. 
 #
 # 2. case: module is somewhere else:
 #	1. Add mymodule to sys path:  'sys.path.insert(0, r'../../my/module/folder')'
